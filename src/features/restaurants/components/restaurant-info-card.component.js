@@ -4,7 +4,9 @@ import { Card } from "react-native-paper";
 import styled from "styled-components";
 import {
   RestaurantCard,
+  RestaurantCardAddress,
   RestaurantCardCover,
+  RestaurantCardInfoView,
   RestaurantCardTitle,
 } from "../styles/restaurant.info.card.styles";
 
@@ -23,7 +25,10 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
   return (
     <RestaurantCard elevation={5}>
       <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
-      <RestaurantCardTitle>{name}</RestaurantCardTitle>
+      <RestaurantCardInfoView>
+        <RestaurantCardTitle>{name}</RestaurantCardTitle>
+        <RestaurantCardAddress>{address}</RestaurantCardAddress>
+      </RestaurantCardInfoView>
     </RestaurantCard>
   );
 };
