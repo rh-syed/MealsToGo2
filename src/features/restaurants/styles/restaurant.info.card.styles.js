@@ -26,3 +26,9 @@ export const RestaurantCardAddress = styled(Text)`
   font-family: ${(props) => props.theme.fonts.body};
   font-size: ${(props) => props.theme.fontSizes.caption};
 `;
+
+export const RatingContainer = styled(View)`
+  flex-direction: row;
+  padding-top: ${(props) => props.theme.space[2]};
+  padding-bottom: ${(props) => props.theme.space[2]};
+`;
