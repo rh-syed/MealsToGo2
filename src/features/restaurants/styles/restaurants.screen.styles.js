@@ -9,17 +9,17 @@ export const RestaurantContainer = styled(View)`
 
 export const SearchContainer = styled(View)`
   flex: 0.1;
-  padding: 16px;
+  padding: ${(props) => props.theme.space[3]};
 `;
 
 export const ListViewContainer = styled(View)`
   flex: 0.9;
-  background-color: red;
-  padding: 16px;
+  background-color: ${(props) => props.theme.colors.ui.quaternary};
+  padding: ${(props) => props.theme.space[3]};
 `;
 
 export const AndroidAdjustedSafeAreaView = styled(SafeAreaView)`
   flex: 1;
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.ui.quaternary};
   padding-top: ${Platform.OS === "android" ? StatusBar.currentHeight : 0}px;
 `;
