@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 import { Card } from "react-native-paper";
 import styled from "styled-components";
 
@@ -14,7 +14,15 @@ export const RestaurantCardCover = styled(Card.Cover)`
   background-color: ${(props) => props.theme.colors.ui.quaternary};
 `;
 
-export const RestaurantCardTitle = styled(Text)`
+export const RestaurantCardInfoView = styled(View)`
   padding: ${(props) => props.theme.space[2]};
+`;
+export const RestaurantCardTitle = styled(Text)`
+  font-family: ${(props) => props.theme.fonts.heading};
+  font-size: ${(props) => props.theme.fontSizes.title};
+`;
+
+export const RestaurantCardAddress = styled(Text)`
   font-family: ${(props) => props.theme.fonts.body};
+  font-size: ${(props) => props.theme.fontSizes.caption};
 `;
