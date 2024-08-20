@@ -1,5 +1,4 @@
-import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 import styled from "styled-components";
@@ -21,15 +20,6 @@ export const RestaurantCardCover = styled(Card.Cover)`
 
 export const RestaurantCardInfoView = styled(View)`
   padding: ${(props) => props.theme.space[2]};
-`;
-export const RestaurantCardTitle = styled(Text)`
-  font-family: ${(props) => props.theme.fonts.heading};
-  font-size: ${(props) => props.theme.fontSizes.title};
-`;
-
-export const RestaurantCardAddress = styled(Text)`
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${(props) => props.theme.fontSizes.caption};
 `;
 
 export const Section = styled(View)`
@@ -61,10 +51,4 @@ export const OpenXML = styled(SvgXml).attrs({
   xml: open,
 })`
   flex-direction: row;
-`;
-
-export const ClosedText = styled(Text)`
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${(props) => props.theme.fontSizes.caption};
-  color: ${(props) => props.theme.colors.ui.error};
 `;

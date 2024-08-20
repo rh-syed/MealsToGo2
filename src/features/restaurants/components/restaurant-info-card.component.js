@@ -1,26 +1,18 @@
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
-import { Card } from "react-native-paper";
-import styled from "styled-components";
+import { Image } from "react-native";
 import {
-  ClosedText,
   OpenXML,
-  RatingContainer,
   RatingOpenContainer,
   RatingXML,
   RestaurantCard,
-  RestaurantCardAddress,
   RestaurantCardCover,
   RestaurantCardInfoView,
-  RestaurantCardTitle,
   Section,
   SectionEnd,
 } from "../styles/restaurant.info.card.styles";
-import { SvgXml } from "react-native-svg";
-import star from "../../../../assets/star";
-import open from "../../../../assets/open";
-import { Spacer } from "../../../components/spacer/spacer.component";
 
+import { Spacer } from "../../../components/spacer/spacer.component";
+import { Text as TypoGraphyText } from "../../../components/typography/typography.component";
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
     name = "Some Restaurant",
@@ -39,7 +31,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     <RestaurantCard>
       <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <RestaurantCardInfoView>
-        <RestaurantCardTitle>{name}</RestaurantCardTitle>
+        <TypoGraphyText variant="label">{name}</TypoGraphyText>
         <Section>
           <RatingOpenContainer>
             {ratingArray.map(() => (
@@ -50,7 +42,9 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
             {isOpenNow && <OpenXML />}
             <Spacer position="left" size="large">
               {isClosedTemporarily && (
-                <ClosedText>CLOSED TEMPORARILY</ClosedText>
+                <TypoGraphyText variant="error">
+                  CLOSED TEMPORARILY
+                </TypoGraphyText>
               )}
             </Spacer>
             <Spacer position="left" size="large">
@@ -58,7 +52,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
             </Spacer>
           </SectionEnd>
         </Section>
-        <RestaurantCardAddress>{address}</RestaurantCardAddress>
+        <TypoGraphyText variant="caption">{address}</TypoGraphyText>
       </RestaurantCardInfoView>
     </RestaurantCard>
   );
