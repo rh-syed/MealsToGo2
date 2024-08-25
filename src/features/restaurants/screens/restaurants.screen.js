@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Searchbar } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import {
@@ -9,9 +9,11 @@ import {
   SearchContainer,
 } from "../styles/restaurants.screen.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { RestaurantContext } from "../../../services/restaurant/restaurants.context";
 
 export const RestaurantsScreen = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const { isLoading, error, restaurants } = useContext(RestaurantContext);
   return (
     <AndroidAdjustedSafeAreaView>
       <RestaurantContainer>
@@ -24,24 +26,15 @@ export const RestaurantsScreen = () => {
         </SearchContainer>
         <ListViewContainer>
           <RestaurantList
-            data={[
-              { name: 1 },
-              { name: 3 },
-              { name: 4 },
-              { name: 5 },
-              { name: 6 },
-              { name: 7 },
-              { name: 8 },
-              { name: 9 },
-              { name: 10 },
-              { name: 11 },
-            ]}
+            data={restaurants}
             keyExtractor={(item) => item.name}
-            renderItem={() => (
-              <Spacer position="bottom" size="large">
-                <RestaurantInfoCard />
-              </Spacer>
-            )}
+            renderItem={({ item }) => {
+              return (
+                <Spacer position="bottom" size="large">
+                  <RestaurantInfoCard restaurant={item} />
+                </Spacer>
+              );
+            }}
           />
         </ListViewContainer>
       </RestaurantContainer>
