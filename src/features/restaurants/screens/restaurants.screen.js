@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
-import { Searchbar } from "react-native-paper";
+import { ActivityIndicator, Searchbar } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import {
   AndroidAdjustedSafeAreaView,
   ListViewContainer,
+  RestaurantActivityIndicator,
   RestaurantContainer,
   RestaurantList,
+  RestaurantLoadingIndicatorView,
   SearchContainer,
 } from "../styles/restaurants.screen.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
@@ -25,6 +27,9 @@ export const RestaurantsScreen = () => {
           />
         </SearchContainer>
         <ListViewContainer>
+          <RestaurantLoadingIndicatorView>
+            {isLoading && <RestaurantActivityIndicator />}
+          </RestaurantLoadingIndicatorView>
           <RestaurantList
             data={restaurants}
             keyExtractor={(item) => item.name}
