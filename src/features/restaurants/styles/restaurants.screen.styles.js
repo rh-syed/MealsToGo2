@@ -6,6 +6,7 @@ import {
   StatusBar,
   View,
 } from "react-native";
+import { ActivityIndicator } from "react-native-paper";
 import styled from "styled-components";
 
 export const RestaurantContainer = styled(View)`
@@ -34,3 +35,19 @@ export const RestaurantList = styled(FlatList).attrs({
 })`
   background-color: ${(props) => props.theme.colors.ui.quaternary};
 `;
+
+export const RestaurantLoadingIndicatorView = styled(View)`
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+`;
+
+export const RestaurantActivityIndicator = styled(ActivityIndicator).attrs(
+  (props) => ({
+    animating: true,
+    size: "large",
+    color: props.theme.colors.brand.primary,
+  })
+)``;
