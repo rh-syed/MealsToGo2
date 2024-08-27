@@ -10,10 +10,13 @@ export const LocationContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [location, setLocation] = useState(null);
 
-  const onSearch = (searchKeyword = "Toronto") => {
-    console.log(searchKeyword);
+  const onSearch = (searchKeyword) => {
+    console.log(searchKeyword.toLowerCase());
     setIsLoading(true);
     setKeyword(searchKeyword);
+    if (!searchKeyword.length) {
+      return;
+    }
     locationRequest(searchKeyword.toLowerCase())
       .then(locationTransform)
       .then((result) => {
@@ -24,12 +27,9 @@ export const LocationContextProvider = ({ children }) => {
       .catch((err) => {
         setIsLoading(false);
         setError(err);
+        console.log(err);
       });
   };
-
-  useEffect(() => {
-    onSearch();
-  }, []);
 
   return (
     <LocationContext.Provider
