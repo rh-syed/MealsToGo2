@@ -11,6 +11,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Text, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { RestaurantContextProvider } from "./src/services/restaurant/restaurants.context";
+import { LocationContextProvider } from "./src/services/location/location.context";
 
 export default function App() {
   const [oswaldLoaded] = useOswald({ Oswald_400Regular });
@@ -52,15 +53,17 @@ export default function App() {
   }
   return (
     <ThemeProvider theme={theme}>
-      <RestaurantContextProvider>
-        <NavigationContainer>
-          <Tab.Navigator screenOptions={createScreenOptions}>
-            <Tab.Screen name="Restaurant" component={RestaurantsScreen} />
-            <Tab.Screen name="Map" component={MapsScreen} />
-            <Tab.Screen name="Settings" component={SettingsScreen} />
-          </Tab.Navigator>
-        </NavigationContainer>
-      </RestaurantContextProvider>
+      <LocationContextProvider>
+        <RestaurantContextProvider>
+          <NavigationContainer>
+            <Tab.Navigator screenOptions={createScreenOptions}>
+              <Tab.Screen name="Restaurant" component={RestaurantsScreen} />
+              <Tab.Screen name="Map" component={MapsScreen} />
+              <Tab.Screen name="Settings" component={SettingsScreen} />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </RestaurantContextProvider>
+      </LocationContextProvider>
     </ThemeProvider>
   );
 }
