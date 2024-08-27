@@ -12,6 +12,7 @@ import {
 } from "../styles/restaurants.screen.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { RestaurantContext } from "../../../services/restaurant/restaurants.context";
+import { Search } from "../components/search.component";
 
 export const RestaurantsScreen = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -19,13 +20,7 @@ export const RestaurantsScreen = () => {
   return (
     <AndroidAdjustedSafeAreaView>
       <RestaurantContainer>
-        <SearchContainer>
-          <Searchbar
-            placeholder="Search"
-            onChangeText={setSearchQuery}
-            value={searchQuery}
-          />
-        </SearchContainer>
+        <Search />
         <ListViewContainer>
           <RestaurantLoadingIndicatorView>
             {isLoading && <RestaurantActivityIndicator />}
