@@ -13,8 +13,10 @@ import {
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { RestaurantContext } from "../../../services/restaurant/restaurants.context";
 import { Search } from "../components/search.component";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { RESTAURANTS_DETAILS } from "../../../infrastructure/navigation/navigation.keys";
 
-export const RestaurantsScreen = () => {
+export const RestaurantsScreen = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const { isLoading, error, restaurants } = useContext(RestaurantContext);
   return (
@@ -30,9 +32,13 @@ export const RestaurantsScreen = () => {
             keyExtractor={(item) => item.name}
             renderItem={({ item }) => {
               return (
-                <Spacer position="bottom" size="large">
-                  <RestaurantInfoCard restaurant={item} />
-                </Spacer>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate(RESTAURANTS_DETAILS)}
+                >
+                  <Spacer position="bottom" size="large">
+                    <RestaurantInfoCard restaurant={item} />
+                  </Spacer>
+                </TouchableOpacity>
               );
             }}
           />

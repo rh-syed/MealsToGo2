@@ -12,42 +12,12 @@ import { Text, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { RestaurantContextProvider } from "./src/services/restaurant/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
+import { AppNavigation } from "./src/infrastructure/navigation/app.navigation";
 
 export default function App() {
   const [oswaldLoaded] = useOswald({ Oswald_400Regular });
   const [latoLoaded] = useLato({ Lato_400Regular });
 
-  const Tab = createBottomTabNavigator();
-
-  const TAB_ICON = {
-    Restaurant: "restaurant",
-    Map: "map",
-    Settings: "settings",
-  };
-
-  const createScreenOptions = ({ route }) => {
-    const iconName = TAB_ICON[route.name];
-    return {
-      tabBarIcon: ({ size, color }) => (
-        <Ionicons name={iconName} size={size} color={color} />
-      ),
-    };
-  };
-  function SettingsScreen() {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Settings</Text>
-      </View>
-    );
-  }
-
-  function MapsScreen() {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Maps</Text>
-      </View>
-    );
-  }
   if (!oswaldLoaded || !latoLoaded) {
     return null;
   }
@@ -55,13 +25,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <LocationContextProvider>
         <RestaurantContextProvider>
-          <NavigationContainer>
-            <Tab.Navigator screenOptions={createScreenOptions}>
-              <Tab.Screen name="Restaurant" component={RestaurantsScreen} />
-              <Tab.Screen name="Map" component={MapsScreen} />
-              <Tab.Screen name="Settings" component={SettingsScreen} />
-            </Tab.Navigator>
-          </NavigationContainer>
+          <AppNavigation />
         </RestaurantContextProvider>
       </LocationContextProvider>
     </ThemeProvider>
