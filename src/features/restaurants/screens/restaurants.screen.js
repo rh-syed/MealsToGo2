@@ -15,14 +15,27 @@ import { RestaurantContext } from "../../../services/restaurant/restaurants.cont
 import { Search } from "../components/search.component";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { RESTAURANTS_DETAILS } from "../../../infrastructure/navigation/navigation.keys";
+import { FavoriteBar } from "../../../components/favorites/favorite-bar.component";
+import { FavouritesContext } from "../../../services/favorites/favorites.context";
 
 export const RestaurantsScreen = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const { isLoading, error, restaurants } = useContext(RestaurantContext);
+  const { favourites } = useContext(FavouritesContext);
+  const [isFavouriteToggled, setFavouriteToggled] = useState(false);
   return (
     <AndroidAdjustedSafeAreaView>
       <RestaurantContainer>
-        <Search />
+        <Search
+          isFavouritesToggled={isFavouriteToggled}
+          onFavouritesToggle={() => setFavouriteToggled(!isFavouriteToggled)}
+        />
+        {isFavouriteToggled && (
+          <FavoriteBar
+            favourites={favourites}
+            onNavigate={navigation.navigate}
+          />
+        )}
         <ListViewContainer>
           <RestaurantLoadingIndicatorView>
             {isLoading && <RestaurantActivityIndicator />}

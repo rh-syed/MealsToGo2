@@ -3,7 +3,7 @@ import { SearchContainer } from "../styles/restaurants.screen.styles";
 import { useContext, useEffect, useState } from "react";
 import { LocationContext } from "../../../services/location/location.context";
 
-export const Search = () => {
+export const Search = ({ isFavouritesToggled, onFavouritesToggle }) => {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState(keyword);
 
@@ -15,6 +15,8 @@ export const Search = () => {
     <SearchContainer>
       <Searchbar
         placeholder="Search for a location"
+        icon={isFavouritesToggled ? "heart" : "heart-outline"}
+        onIconPress={onFavouritesToggle}
         onChangeText={(text) => {
           setSearchKeyword(text);
         }}
