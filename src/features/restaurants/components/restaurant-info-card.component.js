@@ -1,5 +1,5 @@
 import React from "react";
-import { Image } from "react-native";
+import { Image, View } from "react-native";
 import {
   OpenXML,
   RatingOpenContainer,
@@ -13,6 +13,7 @@ import {
 
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text as TypoGraphyText } from "../../../components/typography/typography.component";
+import { Favourite } from "../../../components/favorites/favorite.component";
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
     name = "Some Restaurant",
@@ -30,7 +31,10 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const ratingArray = Array.from(new Array(Math.floor(rating)));
   return (
     <RestaurantCard>
-      <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
+      <View>
+        <Favourite restaurant={restaurant} />
+        <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
+      </View>
       <RestaurantCardInfoView>
         <TypoGraphyText variant="label">{name}</TypoGraphyText>
         <Section>
