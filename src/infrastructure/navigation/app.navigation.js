@@ -36,12 +36,10 @@ function SettingsScreen() {
 
 export const AppNavigation = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator screenOptions={createScreenOptions}>
-        <Tab.Screen name={RESTAURANT_TAB} component={RestaurantsNavigator} />
-        <Tab.Screen name={MAP_TAB} component={MapScreen} />
-        <Tab.Screen name={SETTINGS_TAB} component={SettingsScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator screenOptions={createScreenOptions}>
+      <Tab.Screen name={RESTAURANT_TAB} component={RestaurantsNavigator} />
+      <Tab.Screen name={MAP_TAB} component={MapScreen} />
+      <Tab.Screen name={SETTINGS_TAB} component={SettingsScreen} />
+    </Tab.Navigator>
   );
 };
