@@ -4,6 +4,7 @@ import {
   AccountBackground,
   AccountContainer,
   AccountCover,
+  AnimationWrapper,
   AuthButton,
   AuthInput,
   ErrorContainer,
@@ -14,6 +15,7 @@ import { ActivityIndicator, TextInput, Colors } from "react-native-paper";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text as TypoGraphyText } from "../../../components/typography/typography.component";
 import { colors } from "../../../infrastructure/theme/colors";
+import LottieView from "lottie-react-native";
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -28,6 +30,16 @@ export const LoginScreen = () => {
   return (
     <AccountBackground>
       <AccountCover />
+      <AnimationWrapper>
+        <LottieView
+          key="animation"
+          style={{ flex: 1 }}
+          autoPlay
+          loop
+          resizeMode="cover"
+          source={require("../../../../assets/watermelon.json")}
+        />
+      </AnimationWrapper>
       <Title>Meals To Go</Title>
       <AccountContainer>
         <AuthInput
