@@ -8,6 +8,10 @@ import { RestaurantsScreen } from "../../features/restaurants/screens/restaurant
 import { RestaurantsNavigator } from "./restaurants.navigation";
 import { MAP_TAB, RESTAURANT_TAB, SETTINGS_TAB } from "./navigation.keys";
 import { MapScreen } from "../../features/map/screens/map.screen";
+import { SettingsScreen } from "../../features/settings/screens/settings.screen";
+import { RestaurantContextProvider } from "../../services/restaurant/restaurants.context";
+import { FavouritesContextProvider } from "../../services/favorites/favorites.context";
+import { LocationContextProvider } from "../../services/location/location.context";
 
 const Tab = createBottomTabNavigator();
 
@@ -26,20 +30,22 @@ const createScreenOptions = ({ route }) => {
     headerShown: false,
   };
 };
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings</Text>
-    </View>
-  );
-}
 
 export const AppNavigation = () => {
   return (
-    <Tab.Navigator screenOptions={createScreenOptions}>
-      <Tab.Screen name={RESTAURANT_TAB} component={RestaurantsNavigator} />
-      <Tab.Screen name={MAP_TAB} component={MapScreen} />
-      <Tab.Screen name={SETTINGS_TAB} component={SettingsScreen} />
-    </Tab.Navigator>
+    <FavouritesContextProvider>
+      <LocationContextProvider>
+        <RestaurantContextProvider>
+          <Tab.Navigator screenOptions={createScreenOptions}>
+            <Tab.Screen
+              name={RESTAURANT_TAB}
+              component={RestaurantsNavigator}
+            />
+            <Tab.Screen name={MAP_TAB} component={MapScreen} />
+            <Tab.Screen name={SETTINGS_TAB} component={SettingsScreen} />
+          </Tab.Navigator>
+        </RestaurantContextProvider>
+      </LocationContextProvider>
+    </FavouritesContextProvider>
   );
 };

@@ -30,13 +30,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <AuthenticationContextProvider>
-        <FavouritesContextProvider>
-          <LocationContextProvider>
-            <RestaurantContextProvider>
-              <Navigation />
-            </RestaurantContextProvider>
-          </LocationContextProvider>
-        </FavouritesContextProvider>
+        <Navigation />
       </AuthenticationContextProvider>
     </ThemeProvider>
   );
