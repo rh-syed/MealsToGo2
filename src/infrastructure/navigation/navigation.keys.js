@@ -6,3 +6,5 @@ export const SETTINGS_TAB = "Settings";
 export const ACCOUNT_SCREEN = "Account";
 export const LOGIN_SCREEN = "Login";
 export const REGISTER_SCREEN = "Register";
+export const FAVORITES_SCREEN = "Favorites";
+export const SETTINGS_SCREEN = "Settings";
