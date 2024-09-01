@@ -12,6 +12,7 @@ import { SettingsScreen } from "../../features/settings/screens/settings.screen"
 import { RestaurantContextProvider } from "../../services/restaurant/restaurants.context";
 import { FavouritesContextProvider } from "../../services/favorites/favorites.context";
 import { LocationContextProvider } from "../../services/location/location.context";
+import { SettingsNavigator } from "./settings.navigation";
 
 const Tab = createBottomTabNavigator();
 
@@ -42,7 +43,7 @@ export const AppNavigation = () => {
               component={RestaurantsNavigator}
             />
             <Tab.Screen name={MAP_TAB} component={MapScreen} />
-            <Tab.Screen name={SETTINGS_TAB} component={SettingsScreen} />
+            <Tab.Screen name={SETTINGS_TAB} component={SettingsNavigator} />
           </Tab.Navigator>
         </RestaurantContextProvider>
       </LocationContextProvider>
