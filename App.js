@@ -14,6 +14,9 @@ import { RestaurantContextProvider } from "./src/services/restaurant/restaurants
 import { LocationContextProvider } from "./src/services/location/location.context";
 import { AppNavigation } from "./src/infrastructure/navigation/app.navigation";
 import { FavouritesContextProvider } from "./src/services/favorites/favorites.context";
+import { Navigation } from "./src/infrastructure/navigation";
+import { FIREBASE_APP } from "./src/utils/firebase.config";
+import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 
 export default function App() {
   const [oswaldLoaded] = useOswald({ Oswald_400Regular });
@@ -22,15 +25,19 @@ export default function App() {
   if (!oswaldLoaded || !latoLoaded) {
     return null;
   }
+
+  FIREBASE_APP;
   return (
     <ThemeProvider theme={theme}>
-      <FavouritesContextProvider>
-        <LocationContextProvider>
-          <RestaurantContextProvider>
-            <AppNavigation />
-          </RestaurantContextProvider>
-        </LocationContextProvider>
-      </FavouritesContextProvider>
+      <AuthenticationContextProvider>
+        <FavouritesContextProvider>
+          <LocationContextProvider>
+            <RestaurantContextProvider>
+              <Navigation />
+            </RestaurantContextProvider>
+          </LocationContextProvider>
+        </FavouritesContextProvider>
+      </AuthenticationContextProvider>
     </ThemeProvider>
   );
 }
