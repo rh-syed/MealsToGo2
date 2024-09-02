@@ -25,6 +25,7 @@ export const SettingsScreen = ({ navigation }) => {
           <Text variant="label">{user.email}</Text>
         </Spacer>
       </AvatarContainer>
+
       <List.Section>
         <SettingsItem
           title="Favourites"

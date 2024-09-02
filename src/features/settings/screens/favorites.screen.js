@@ -11,6 +11,7 @@ import { RESTAURANTS_DETAILS } from "../../../infrastructure/navigation/navigati
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { RestaurantInfoCard } from "../../restaurants/components/restaurant-info-card.component";
 import { Text as TypoGraphyText } from "../../../components/typography/typography.component";
+import { FadeInView } from "../../../components/animations/fade.animation";
 
 export const FavoritesScreen = ({ navigation }) => {
   const { favourites } = useContext(FavouritesContext);
@@ -36,9 +37,11 @@ export const FavoritesScreen = ({ navigation }) => {
                   })
                 }
               >
-                <Spacer position="bottom" size="large">
-                  <RestaurantInfoCard restaurant={item} />
-                </Spacer>
+                <FadeInView>
+                  <Spacer position="bottom" size="large">
+                    <RestaurantInfoCard restaurant={item} />
+                  </Spacer>
+                </FadeInView>
               </TouchableOpacity>
             );
           }}
