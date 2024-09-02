@@ -17,6 +17,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { RESTAURANTS_DETAILS } from "../../../infrastructure/navigation/navigation.keys";
 import { FavoriteBar } from "../../../components/favorites/favorite-bar.component";
 import { FavouritesContext } from "../../../services/favorites/favorites.context";
+import { FadeInView } from "../../../components/animations/fade.animation";
 
 export const RestaurantsScreen = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -52,9 +53,11 @@ export const RestaurantsScreen = ({ navigation }) => {
                     })
                   }
                 >
-                  <Spacer position="bottom" size="large">
-                    <RestaurantInfoCard restaurant={item} />
-                  </Spacer>
+                  <FadeInView>
+                    <Spacer position="bottom" size="large">
+                      <RestaurantInfoCard restaurant={item} />
+                    </Spacer>
+                  </FadeInView>
                 </TouchableOpacity>
               );
             }}
