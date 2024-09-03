@@ -21,7 +21,28 @@
       }
     },
     "plugins": [
-      "expo-font"
-    ]
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
+          "recordAudioAndroid": true
+        }
+      ],
+      [
+          "expo-font"
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "7c28606c-a212-465f-aa2b-d4c037385e0f"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/7c28606c-a212-465f-aa2b-d4c037385e0f"
+    }
   }
 }
